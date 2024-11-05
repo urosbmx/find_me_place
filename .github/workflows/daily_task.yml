@@ -1,0 +1,40 @@
+name: Run Python Script with .env Setup
+
+on:
+  push:
+    branches:
+      - main  # You can change this to your default branch if needed
+  workflow_dispatch:  # Allows you to trigger the workflow manually from GitHub UI
+
+jobs:
+  setup-and-run:
+    runs-on: ubuntu-latest  # This is the runner environment
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Python (optional, but recommended)
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'  # You can change the Python version here
+
+      # Step 3: Create the .env file
+      - name: Create .env file
+        run: |
+          echo "PASSWORD_MAIL=${{ secrets.PASSWORD_MAIL }}" >> .env
+          echo "EMAIL=${{ secrets.EMAIL }}" >> .env
+          echo "RECEIVER=${{ secrets.RECEIVER }}" >> .env
+
+      # Step 4: Install dependencies (if you have a requirements.txt file)
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt  # If you have a requirements.txt
+
+      # Step 5: Run the Python script
+      - name: Run Python script
+        run: |
+          python3 main.py
