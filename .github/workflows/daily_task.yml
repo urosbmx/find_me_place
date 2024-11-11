@@ -2,9 +2,8 @@ name: Run Python Script with .env Setup
 
 on:
   schedule:
-    # * is a special character in YAML so you have to quote this string
-    - cron:  '30 5,17 * * *' # Allows you to trigger the workflow manually from GitHub UI
-
+    - cron:  '30 5,17 * * *' 
+  workflow_dispatch:
 jobs:
   setup-and-run:
     runs-on: ubuntu-latest  # This is the runner environment
