@@ -1,10 +1,9 @@
 name: Run Python Script with .env Setup
 
 on:
-  push:
-    branches:
-      - main  # You can change this to your default branch if needed
-  workflow_dispatch:  # Allows you to trigger the workflow manually from GitHub UI
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '30 5,17 * * *' # Allows you to trigger the workflow manually from GitHub UI
 
 jobs:
   setup-and-run:
