@@ -4,6 +4,7 @@ on:
   schedule:
     - cron: '0 7 * * *'
     - timezone: 'Europe/Belgrade'  # Automatically adjusts for CET/CEST
+
   workflow_dispatch:
 jobs:
   setup-and-run:
@@ -25,7 +26,7 @@ jobs:
         run: |
           echo "PASSWORD_MAIL=${{ secrets.PASSWORD_MAIL }}" >> .env
           echo "EMAIL=${{ secrets.EMAIL }}" >> .env
-          echo "RECEIVER=${{ secrets.RECEIVER }}" >> .env
+          echo "RECEIVER=${{ secrets.RECEIVER2 }}" >> .env
 
       # Step 4: Install dependencies (if you have a requirements.txt file)
       - name: Install dependencies
