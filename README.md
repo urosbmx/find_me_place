@@ -1,7 +1,3 @@
-Here's a README file based on the Python script you provided. It explains what the script does, how to set it up, and how to run it.
-
----
-
 # Property Scraper & Email Notifier
 
 This script scrapes property listings from **Halo Oglasi** for specific locations in Belgrade, Serbia, and sends an email notification if new properties are found.
